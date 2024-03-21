@@ -1,0 +1,6 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        input_data = str(x)
+        reverse = input_data[::-1]
+        result = True if input_data ==  reverse else False 
+        return result
