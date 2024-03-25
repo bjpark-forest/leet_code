@@ -1,0 +1,22 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        length = len(nums)
+        prev = 101
+        c_idx = 0
+        next_idx = 0
+        while c_idx<length:
+            while (next_idx<length) and (nums[next_idx]==prev) :
+                next_idx += 1
+            if next_idx>=length :
+                break
+            nums[c_idx]=nums[next_idx]
+            prev = nums[c_idx]
+            c_idx+=1
+            next_idx+=1
+
+        return_value = c_idx
+        while c_idx < length :
+            nums[c_idx] = '_'
+            c_idx +=1
+
+        return return_value
