@@ -1,0 +1,25 @@
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        # sol_1
+        # _temp = {}
+        
+        # for num in nums :
+        #     if num in _temp.keys() :
+        #         _temp[num] += 1
+        #     else :
+        #         _temp[num] = 1
+        # output = []
+        # for num in _temp.keys() :
+        #     if _temp[num] > 1:
+        #         output.append(num)
+        # return output
+
+        # sol_2
+        _temp = set()
+        output = []
+        for num in nums :
+            if num in _temp :
+                output.append(num)
+            else:
+                _temp.add(num)
+        return output
