@@ -1,0 +1,19 @@
+length = len(nums)
+        prev = val
+        c_idx = 0
+        next_idx = 0
+        while c_idx<length:
+            while (next_idx<length) and (nums[next_idx]==val) :
+                next_idx += 1
+            if next_idx>=length :
+                break
+            nums[c_idx]=nums[next_idx]
+            c_idx+=1
+            next_idx+=1
+
+        return_value = c_idx
+        while c_idx < length :
+            nums[c_idx] = '_'
+            c_idx +=1
+
+        return return_value
