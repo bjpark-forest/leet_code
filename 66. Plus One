@@ -1,0 +1,14 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        number = 0
+        for x in digits :
+            number = number*10+x
+        x = 0
+        digits = []
+        number = number+1
+        while number != 0 :
+            x = number%10
+            digits.append(x)
+            number = number//10
+        digits.reverse()
+        return digits
