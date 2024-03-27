@@ -1,0 +1,17 @@
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        num_a = 0 
+        num_b = 0
+        for ax in a :
+            num_a = num_a*2+int(ax)
+        for bx in b :
+            num_b = num_b*2+int(bx)
+        temp = num_a+num_b
+        result = ""
+        if temp == 0 :
+                return "0"
+        while temp > 0 :
+            result=str(temp%2)+result
+            temp = temp//2
+        
+        return result
