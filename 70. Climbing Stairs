@@ -1,0 +1,9 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        from math import factorial
+        result = 0
+        for twos in range(n//2+1) :            
+            ones = n-twos*2
+            result += (factorial(twos+ones)/factorial(twos)/factorial(ones))
+        return int(result)
+        
