@@ -1,0 +1,19 @@
+class Solution:
+    min_depth=10000000
+    def minDepth(self, root: TreeNode) -> int:
+        def getLeaf(node,depth) :
+            if node == None :
+                self.min_depth=0
+                return
+            if (node.left==None) and (node.right==None) :
+                if depth<self.min_depth :
+                    self.min_depth=depth
+                    print('new depth',depth)
+            else :
+                # print('val', node.val)
+                if (node.left != None) :
+                    getLeaf(node.left,depth+1)
+                if (node.right != None) :
+                    getLeaf(node.right,depth+1)
+        getLeaf(root,1)
+        return self.min_depth
