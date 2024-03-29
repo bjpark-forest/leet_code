@@ -1,0 +1,15 @@
+class Solution:
+    def hasPathSum(self, root: TreeNode, targetSum: int) -> bool:
+        def goDown(node,targetSum,sum=0) :
+            if not node :
+                return False
+            if (node.left==None) and (node.right==None) and (node.val+sum==targetSum):
+                return True
+            if (node.left) and (goDown(node.left,targetSum,node.val+sum)) :
+                return True
+            if (node.right) and (goDown(node.right,targetSum,node.val+sum)) :
+                return True
+            return False
+        if not root :
+            return False
+        return goDown(root,targetSum)
