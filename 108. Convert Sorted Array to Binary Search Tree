@@ -1,0 +1,38 @@
+class Solution:
+    root=None
+    def find_node(self, node, val) :
+        if node == None :
+            return None
+
+        next = node
+        while next != None :
+            node = next
+            if node.val < val :
+                next = node.right
+            else :
+                next = node.left
+        return node
+
+    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+        def get_mid_idx(nums) :
+            if nums == [] :
+                return -1
+            # print("mid", len(nums)//2, "val",nums[len(nums)//2])
+            return len(nums)//2
+
+        def insert_mid_val(nums) :
+            mid = get_mid_idx(nums)
+            if mid != -1 :
+                mother_node = self.find_node(self.root,nums[mid])
+                if mother_node == None :
+                    self.root=TreeNode(nums[mid])
+                elif mother_node.val < nums[mid] :
+                    mother_node.right = TreeNode(nums[mid])
+                else :
+                    mother_node.left = TreeNode(nums[mid])
+                
+                insert_mid_val(nums[:mid])
+                insert_mid_val(nums[mid+1:])
+
+        insert_mid_val(nums)
+        return self.root
