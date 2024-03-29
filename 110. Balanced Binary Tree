@@ -1,0 +1,21 @@
+class Solution:
+    # Get the height of the node
+    def getHeight(self, root):
+        if root == None:
+            return 0
+        elif  (root.left==None) and (root.right==None) :
+            return 1
+        else :
+            return max(self.getHeight(root.left),self.getHeight(root.right))+1 
+
+    def isBalanced(self, root: TreeNode) -> bool:
+        if root == None :
+            return True
+        l_height = self.getHeight(root.left)
+        r_height = self.getHeight(root.right)
+        if abs(l_height-r_height)>1 :
+            return False
+        elif self.isBalanced(root.left) :
+            return self.isBalanced(root.right)
+        else :
+            return False
