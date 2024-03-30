@@ -1,0 +1,29 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        def get_next_valid(node, val) :
+            if node == None :
+                return None
+            if node.next == None :
+                return None
+            while node.next != None :
+                if node.next.val != val :
+                    return node.next
+                else :
+                    node = node.next
+            return None
+
+        if head == None :
+            return None
+        if head.val == val :
+            head = get_next_valid(head,val)
+        node = head
+        while (node != None) and (node.next != None) :
+            if node.next.val == val :
+                node.next=get_next_valid(node.next,val)
+            node = node.next
+        return head
