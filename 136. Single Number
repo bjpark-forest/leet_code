@@ -1,0 +1,9 @@
+class Solution:
+    def singleNumber(self, nums):
+        n_set = set(nums)
+        n_dic = {}
+        for num in n_set :
+            n_dic[num]=2
+        for num in nums :
+            n_dic[num]-=1
+        return list(n_dic.keys())[list(n_dic.values()).index(1)]
