@@ -10,8 +10,7 @@ class Solution:
         def traversal(node:TreeNode, level=0) :
             if node== None:
                 return
-            if node != None :
-                result.append(node.val)
+            result.append(node.val)
             if node.left != None :
                 traversal(node.left, level+1)
             if node.right != None :
