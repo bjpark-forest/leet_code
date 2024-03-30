@@ -1,0 +1,12 @@
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        bucket = {}
+        for idx, num in enumerate(nums) :
+            if num in bucket.keys() :
+                for i in bucket[num] :
+                    if abs(i-idx)<=k:
+                        return True
+                bucket[num].append(idx)
+            else :
+                bucket[num]=[idx]
+        return False
