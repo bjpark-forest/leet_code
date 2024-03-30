@@ -1,0 +1,10 @@
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        list_bits = []
+        val=0
+        for i in range(32) :
+            list_bits.append(n&1)
+            n = n >> 1
+        for j in list_bits :
+            val=val*2+j
+        return val
