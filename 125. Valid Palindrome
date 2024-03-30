@@ -1,0 +1,34 @@
+class Solution:
+    # def isPalindrome(self, s: str) -> bool:
+    #     si=0
+    #     ei=len(s)-1
+    #     s=s.lower()
+    #     while si<ei :
+    #         if not s[si].isalnum() :
+    #             si += 1
+    #             continue
+    #         if not s[ei].isalnum() :
+    #             ei -= 1
+    #             continue
+    #         if s[si] != s[ei] :
+    #             return False
+    #         else :
+    #             si += 1
+    #             ei -= 1
+    #     return True
+
+    def isPalindrome(self, s: str) -> bool:
+        s = [x.lower() for x in s if x.isalnum()]
+        mid = len(s)//2
+        if len(s)%2 : # odd
+            front = s[:mid]
+            rear = s[mid+1:]
+        else : # even
+            front = s[:mid]
+            rear = s[mid:]
+        front.reverse()
+        # print(front,  rear)
+        if front == rear :
+            return True
+        else :
+            return False    
