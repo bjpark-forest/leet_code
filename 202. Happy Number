@@ -1,0 +1,31 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        class Solution:
+    def isHappy(self, n: int) -> bool:
+        def components(n) :
+            bucket = []
+            while n > 0 :
+                bucket.append(n%10)
+                n=n//10
+            bucket.sort()
+            return bucket
+
+        def isHappyBucket(bucket) :
+            _sum = sum([x*x for x in bucket])
+            if _sum == 1:
+                return True, _sum
+            else :
+                return False, _sum
+
+        history_bin = set()
+        while True :
+            bucket = components(n)
+            result, n = isHappyBucket(bucket)
+            if result :
+                return True
+            else :
+                bucket = components(n)
+                if tuple(bucket) in history_bin :
+                    return False
+                else :
+                    history_bin.add(tuple(bucket))
