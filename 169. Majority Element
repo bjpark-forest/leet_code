@@ -1,0 +1,9 @@
+def majorityElement(self,nums) -> int:
+        bucket={}
+        for num in nums :
+            if num not in bucket:
+                bucket[num]=1
+            else :
+                bucket[num]+=1
+            if bucket[num] > floor(len(nums)/2) :
+                return num
