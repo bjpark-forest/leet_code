@@ -1,0 +1,26 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t) :
+            return False
+        si=0
+        ti=0
+        sbucket={}
+        tbucket={}
+        while True :
+            if s[si] not in sbucket :
+                sbucket[s[si]]=si
+                if t[ti] in tbucket :
+                    return False
+                else :
+                    tbucket[t[ti]]=ti
+            else :
+                if t[ti] not in tbucket :
+                    return False
+                else :
+                    if sbucket[s[si]] != tbucket[t[ti]] :
+                        return False
+            if si == len(s)-1 :
+                return True
+            si+=1
+            ti+=1
+        return True
