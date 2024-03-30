@@ -1,0 +1,16 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def reverseNode(child, mother=None) : # node의 next에 node를 연결한다.
+            if child==None :
+                return mother
+            next = child.next
+            # print(f's: {child.val}')
+            child.next = mother
+            new_head=reverseNode(next,child)
+            return new_head
+        return reverseNode(head)
