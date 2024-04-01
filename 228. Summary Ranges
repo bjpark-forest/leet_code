@@ -1,0 +1,21 @@
+class Solution:
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        result = []
+        if nums == [] :
+            return []
+        p,s,e = nums[0], nums[0], nums[0]
+        for c in nums[1:]:           
+            if c==p+1 :
+                p,e=c,c
+                continue
+            else :
+                if s==e :
+                    result.append(f'{s}')
+                else :
+                    result.append(f'{s}->{e}')
+                p,s,e=c,c,c
+        if s==e :
+            result.append(f'{s}')
+        else :
+            result.append(f'{s}->{e}')
+        return result 
