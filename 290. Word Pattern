@@ -1,0 +1,16 @@
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        bucket={}
+        split_list=s.split()
+        if len(split_list) != len(pattern) :
+            return False
+        for i,word in enumerate(split_list) :
+            if pattern[i] in bucket :
+                if bucket[pattern[i]] != word :
+                    return False
+            else :
+                if word in bucket.values() :
+                    return False
+                bucket[pattern[i]] = word
+            # print(bucket, word, i, pattern[i])
+        return True
