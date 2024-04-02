@@ -1,0 +1,32 @@
+# The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        def callAPI(s,e,max_good=0, min_bad=pow(2,31)) :
+            # print(f'callAPI {s} {e} {max_good} {min_bad}')
+            if s==e :
+                m = s
+                # print(f's==e {s} {max_good} {min_bad} ')
+                # return s
+            else :
+                m = (s+e)//2
+            # print(f'm {m}')
+            if isBadVersion(m) :
+                # print(f'{m} is bad. max_good={max_good}')
+                if max_good+1 == m :
+                    return m
+                if s==m : # 이런 경우는 없어야....
+                    return s-1
+                min_bad = min(min_bad,m)
+                return callAPI(s,m-1,max_good,min_bad)
+            else :
+                # print(f'{m} is good. min_bad={min_bad}')
+                if min_bad-1 == m :
+                    return min_bad
+                if m==n :
+                    return m+1
+                max_good = max(max_good,m)
+                return callAPI(m+1,e,max_good, min_bad)
+            
+        return callAPI(1,n)
