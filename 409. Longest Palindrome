@@ -1,0 +1,16 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        bucket={}
+        even_result, odd_result = 0, False
+        for ch in s :
+            if ch not in bucket.keys() :
+                bucket[ch]=1
+            else :
+                bucket[ch]+=1
+        for k,v in bucket.items() :
+            if v >= 2 :
+                even_result+=v//2
+            if v%2 :
+                odd_result=True
+            
+        return even_result*2+(odd_result)
