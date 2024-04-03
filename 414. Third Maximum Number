@@ -1,0 +1,8 @@
+set_nums=set(nums)
+        max_val=max(set_nums)
+        if len(set_nums)<3 :
+            return max_val
+        set_nums.remove(max_val)
+        val=max(set_nums)
+        set_nums.remove(val)
+        return max(set_nums)
