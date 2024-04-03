@@ -1,0 +1,21 @@
+# result = []
+        # for i in range(1,n+1) :
+        #     s = ""
+        #     if (not i%3) :
+        #         if (not i%5) :
+        #             s="FizzBuzz"
+        #         else :
+        #             s="Fizz"
+        #     elif (not i%5):
+        #         s="Buzz"
+        #     else :
+        #         s=str(i)
+        #     result.append(s)
+
+        # return result
+        result=[]
+        
+        for idx in range(1,n+1,15) :
+            table=[f"{idx}",f"{idx+1}","Fizz",f"{idx+3}","Buzz","Fizz",f"{idx+6}",f"{idx+7}","Fizz","Buzz",f"{idx+10}","Fizz",f"{idx+12}",f"{idx+13}","FizzBuzz"]
+            result+=table
+        return result[:n]
