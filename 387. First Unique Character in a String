@@ -1,0 +1,14 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        bucket_done = set()
+        for i,ch in enumerate(s) :
+            # print(i,ch)
+            if i == len(s):
+                return 1
+            if ch in bucket_done :
+                continue
+            if ch not in s[i+1:] :
+                # print(s[i+1:])
+                return i
+            bucket_done.add(ch)
+        return -1
