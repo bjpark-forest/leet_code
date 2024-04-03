@@ -1,0 +1,26 @@
+if turnedOn >= 9 :
+            return []
+        bottom_list =[0,1]
+        while 1 :
+            bottom_list = bottom_list+[x+1 for x in bottom_list]
+            if len(bottom_list) >= 60 :
+                bottom_list = bottom_list[:60]
+                break
+        bottom_dict = {}
+        for i,v in enumerate(bottom_list) :
+            if v not in bottom_dict :
+                bottom_dict[v]=[i]
+            else :
+                bottom_dict[v].append(i)
+        result = []
+        top_on = [0,1,1,2,1,2,2,3,1,2,2,3]
+        for h in range(12) :
+            # print(f'h:{h},on:{top_on[h]}')
+            if top_on[h] > turnedOn :
+                continue
+            if (turnedOn-top_on[h] > len(bottom_dict)-1) or (turnedOn-top_on[h]<0) :
+                continue
+            for mm in bottom_dict[turnedOn-top_on[h]] :
+                # print(f'mm:{mm}')
+                result.append(f'{h}:{mm:02}')
+        return result
