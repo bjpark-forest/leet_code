@@ -1,0 +1,15 @@
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        list_t = [x for x in t]
+        l_idx = 0
+        for i,ch in enumerate(s) :
+            if ch not in list_t[l_idx:] :
+                return False
+            c_idx = list_t[l_idx:].index(ch)
+            # print(f'l_idx:{l_idx}, i:{i}, c_idx:{c_idx}, ch:{ch}')
+            if c_idx == -1 :
+                return False
+            # if c_idx < l_idx :
+            #     return False
+            l_idx += c_idx+1
+        return True
