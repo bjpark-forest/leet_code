@@ -1,0 +1,13 @@
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        v=[ch for ch in s if ch.lower() in ("a","e","i","o","u")]
+        result = ""
+        idx = len(v)-1
+        for ch in s :
+            if ch.lower() in ("a","e","i","o","u") :
+                result += v[idx]
+                idx-=1
+            else :
+                result += ch
+
+        return result
