@@ -1,0 +1,36 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        idx1 = len(num1)-1
+        idx2 = len(num2)-1
+        result = []
+        over = 0
+        while (idx1 >= 0) and (idx2 >= 0) :
+            # print(num1[idx1],num2[idx2],over,int(num1[idx1])+int(num2[idx2])+over)
+            num = int(num1[idx1])+int(num2[idx2])+over
+            if num>= 10 :
+                over = 1
+            else :
+                over = 0
+            result.append(str(num%10))
+            idx1 -= 1
+            idx2 -= 1
+        while idx1 >= 0 :
+            num =int(num1[idx1])+over
+            if num>= 10 :
+                over = 1
+            else :
+                over = 0
+            result.append(str(num%10))
+            idx1 -= 1
+        while idx2 >= 0 :
+            num =int(num2[idx2])+over
+            if num>= 10 :
+                over = 1
+            else :
+                over = 0
+            result.append(str(num%10))
+            idx2 -= 1
+        if over :
+            result.append("1")
+        result.reverse()
+        return "".join(result)
