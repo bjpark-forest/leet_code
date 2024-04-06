@@ -1,0 +1,24 @@
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        result = 0
+        def exist_ge(_list, num):
+            if _list ==[]:
+                return None
+            idx = 0
+            while (idx<len(_list)) and (_list[idx]<num) :
+                idx+=1
+            if idx==len(_list) :
+                return None
+            else :
+                return _list[idx]
+
+        g.sort()
+        s.sort()
+        for i in range(len(g)) :
+            _get_num = exist_ge(s, g[i]) 
+            # print(i,g[i],s,_get_num)
+            if _get_num != None :
+                s.remove(_get_num)
+            else :
+                return i
+        return i+1
