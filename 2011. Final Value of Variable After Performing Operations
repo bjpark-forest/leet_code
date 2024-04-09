@@ -1,0 +1,14 @@
+class Solution(object):
+    def finalValueAfterOperations(self, operations):
+        """
+        :type operations: List[str]
+        :rtype: int
+        """
+        X = 0
+        for each in operations:
+            if each in set([ '--X' , 'X--']):
+                X -= 1
+            elif each in set(['X++' , '++X']):
+                X += 1
+        return X
+        
