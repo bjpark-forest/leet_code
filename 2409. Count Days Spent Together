@@ -1,0 +1,20 @@
+class Solution(object):
+    def countDaysTogether(self, arriveAlice, leaveAlice, arriveBob, leaveBob):
+        """
+        :type arriveAlice: str
+        :type leaveAlice: str
+        :type arriveBob: str
+        :type leaveBob: str
+        :rtype: int
+        """
+        Alice = set(range(self.convert(arriveAlice), self.convert(leaveAlice)+1))
+        Bob = set(range(self.convert(arriveBob), self.convert(leaveBob)+1))
+        return len(Alice.intersection(Bob))
+    
+        
+    def convert(self, date):
+        lst = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        month = int(date[:2])
+        day = int(date[-2:])
+        days = sum(lst[:month-1]) + day
+        return days
