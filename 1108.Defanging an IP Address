@@ -1,0 +1,17 @@
+class Solution(object):
+    def defangIPaddr(self, address):
+        """
+        :type address: str
+        :rtype: str
+        """
+        split_addr = address.split('.')
+        #print(split)
+        output = ''
+        for idx, each in enumerate(split_addr):
+            if idx < 3  :
+                output += each +'[.]'
+            else:
+                output +=  each
+        return output 
+
+        
