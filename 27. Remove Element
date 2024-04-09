@@ -1,4 +1,6 @@
-length = len(nums)
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        length = len(nums)
         prev = val
         c_idx = 0
         next_idx = 0
