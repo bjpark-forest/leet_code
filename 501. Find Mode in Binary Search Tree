@@ -1,0 +1,27 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        result,mode,dict = [],0, {}
+        def traversal(node,dict) :
+            if node.val in dict.keys() :
+                dict[node.val] += 1
+            else :
+                dict[node.val] = 1
+            if node.left :
+                traversal(node.left,dict)
+            if node.right :
+                traversal(node.right,dict)
+        traversal(root,dict)
+        # print(dict)
+        for x,val in dict.items() :
+            if val > mode :
+                mode = val
+                result = [x]
+            elif val == mode :
+                result.append(x)
+        return result
