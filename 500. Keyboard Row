@@ -1,0 +1,21 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        result = []
+        rows=[
+            "qwertyuiop",
+            "asdfghjkl",
+            "zxcvbnm"
+        ]
+        look_up = {}
+        for i,row in enumerate(rows) :
+            for ch in row :
+                look_up[ch]=i
+
+        for word in words :
+            row = look_up[word[0].lower()]
+            for ch in word[1:] :
+                if row != look_up[ch.lower()] :
+                    break
+            else :
+                result.append(word)
+        return result
