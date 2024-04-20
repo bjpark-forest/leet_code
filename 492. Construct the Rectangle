@@ -1,0 +1,8 @@
+class Solution:
+    def constructRectangle(self, area: int) -> List[int]:
+        from math import sqrt,ceil,floor
+        for w in range(ceil(sqrt(area)),area) :
+            # print(w)
+            if area % w == 0 :
+                return [w, area//w]
+        return [area,1]
