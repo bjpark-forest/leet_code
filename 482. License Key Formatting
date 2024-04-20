@@ -1,0 +1,14 @@
+class Solution:
+    def licenseKeyFormatting(self, s: str, k: int) -> str:
+        result = ""
+        s=s.replace('-','').upper()
+        length = len(s)
+        prefix_len = length % k
+        # print(f'prefix len : {prefix_len}', simple_list)
+        result=s[:prefix_len]
+        for idx in range(prefix_len, length, k) :
+            if result :
+                result+='-'+s[idx:idx+k]
+            else :
+                result+=s[idx:idx+k]
+        return result
