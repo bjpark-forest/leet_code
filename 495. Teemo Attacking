@@ -1,0 +1,9 @@
+class Solution:
+    def findPoisonedDuration(self, timeSeries: List[int], duration: int) -> int:
+        result = 0
+        for idx in range(len(timeSeries)-1) :
+            if timeSeries[idx+1]-timeSeries[idx]>=duration :
+                result += duration
+            else :
+                result += (timeSeries[idx+1]-timeSeries[idx])
+        return result+duration
