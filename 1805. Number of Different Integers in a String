@@ -1,0 +1,12 @@
+class Solution:
+    def numDifferentIntegers(self, word: str) -> int:
+        new_str = ''
+        for each in word:
+            if ord('0') <= ord(each) <= ord('9'):
+                new_str += each
+            else:
+                new_str += " "
+        #print(new_str)
+        result = len(set(map(lambda x: int(x), new_str.split())))
+
+        return result
