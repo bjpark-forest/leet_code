@@ -1,0 +1,19 @@
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        result = []
+        temp = score.copy()
+        temp.sort(reverse=True)
+        # print(temp)
+        rank_str = [
+            "Gold Medal",
+            "Silver Medal",
+            "Bronze Medal"
+        ]
+        for x in score :
+            rank=temp.index(x)
+            if rank >= 3:
+                result.append(str(rank+1))
+            else :
+                result.append(rank_str[rank])
+
+        return result
