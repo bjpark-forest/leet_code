@@ -1,0 +1,20 @@
+class Solution:
+    def reverseStr(self, s: str, k: int) -> str:
+        def reverse(s) :
+            result = ""
+            for i in range(len(s)-1,-1,-1) :
+                result+=s[i]
+            return result
+        rev_phase=True
+        result = ""
+        idx = 0
+
+        while idx < len(s) :
+            if rev_phase :
+                result+=reverse(s[idx:idx+k])
+            else :
+                result+=s[idx:idx+k]
+            rev_phase = not rev_phase
+            idx+=k
+
+        return result
