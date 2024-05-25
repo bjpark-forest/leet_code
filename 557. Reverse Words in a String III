@@ -1,0 +1,12 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        def reverse(s):
+            result=""
+            for i in range(len(s)-1,-1,-1):
+                result+=s[i]
+            return result
+        splited = s.split()
+        result=reverse(splited[0])
+        for word in splited[1:] :
+            result+=' '+reverse(word)
+        return result
