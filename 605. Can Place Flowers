@@ -1,0 +1,18 @@
+class Solution:
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        # 0 이 연속 3 or 4개면 1개의 꽃을 심을 수 있다.
+        #      연속 5 or 6개면 2개의 꽃을 심을 수 있다.
+        # ...
+        empty, more_flower = 0, 0
+        # 맨 처음과 맨 뒤는 꼭 빈자리가 3개가 아니어도 되므로 0을 padding해서 계산을 쉽게하자
+        flowerbed = [0]+flowerbed+[0] 
+
+        for x in flowerbed :
+            if x == 0 :
+                empty+=1
+            elif empty >= 1 :
+                more_flower += (empty-1)//2 # 3:1 4:1 5:2 6:2
+                empty = 0
+        else :
+            more_flower += (empty-1)//2 
+        return more_flower >= n
