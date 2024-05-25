@@ -1,0 +1,27 @@
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        case = 0 # 0 all capital, 1 all small, 2 first only captial, 3 : 0 or 2
+        if word[0].upper() == word[0] :
+            case = 3 # 0 or 2
+        else :
+            case = 1 # 1
+        for x in word[1:] :
+            if x.lower() == x :
+                if case == 3 :
+                    case = 2 # 2 first only captial
+                elif case == 0 : # 0 all captial  or 2 first only captial,2 
+                    return False
+                # elif case == 2 :
+                #     return False
+                # else case == 1 :
+                #     continue
+            else : # capital
+                if case == 3 :
+                    case = 0 # 0 all capital
+                elif (case == 1) or (case ==2) :
+                    return False
+                # elif case == 2 :
+                #     continue
+                # else : # 0 all capital
+                #     continue
+        return True
