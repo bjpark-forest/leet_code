@@ -1,0 +1,20 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        def dfs(node, values=[]) :
+            if node.left :
+                dfs(node.left,values)
+            values.append(node.val)
+            if node.right :
+                dfs(node.right,values)
+            return values
+        _list=dfs(root)
+        _min = 1000000
+        for i in range(len(_list)-1) :
+            _min = min(_min,_list[i+1]-_list[i])
+        return abs(_min)
