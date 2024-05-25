@@ -1,0 +1,9 @@
+class Solution:
+    def fib(self, n: int) -> int:
+        def _fib(n) :
+            if n <= 1 :
+                return n,0
+            _n, n_1 = _fib(n-1)
+            # print(_n+n_1, _n)
+            return _n+n_1, _n
+        return _fib(n)[0]
