@@ -1,0 +1,13 @@
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        nums_dict = {}
+        max_count = 0
+        for x in nums :
+            if x in nums_dict.keys() :
+                nums_dict[x] += 1
+            else :
+                nums_dict[x] = 1
+        for k,v in nums_dict.items() :
+            if k+1 in nums_dict.keys() :
+                max_count = max(max_count,v+nums_dict[k+1])
+        return max_count
