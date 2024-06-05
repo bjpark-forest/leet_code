@@ -1,0 +1,17 @@
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        result = []
+        def getRect(img,i,j) :
+            temp = []
+            for ii in range(max(0,i-1),min(len(img),i+2)) :
+                for jj in range(max(0,j-1),min(len(img[0]),j+2)) :
+                    temp.append(img[ii][jj])
+            return temp
+
+        for i in range(len(img)) :
+            row=[]
+            for j in range(len(img[0])) :
+                cell = getRect(img,i,j)
+                row.append(sum(cell)//len(cell))
+            result.append(row)
+        return result
