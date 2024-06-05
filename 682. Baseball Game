@@ -1,0 +1,14 @@
+class Solution:
+    def calPoints(self, operations) -> int:
+        record = []
+        for op in operations :
+            # print(op)
+            if op=="+" :
+                record.append(record[len(record)-1]+record[len(record)-2])
+            elif op=="C" :
+                record.pop()
+            elif op=="D" :
+                record.append(record[len(record)-1]*2)
+            else :
+                record.append(int(op))
+        return sum(record)
