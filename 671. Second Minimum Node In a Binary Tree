@@ -1,0 +1,19 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
+        bucket = set()
+        def traverse(node,bucket=None) :
+            bucket.add(node.val)
+            if node.left != None :
+                traverse(node.left,bucket)
+                traverse(node.right,bucket)
+        traverse(root,bucket)
+        bucket.remove(min(bucket))
+        if len(bucket)==0 :
+            return -1
+        return min(bucket)
