@@ -1,0 +1,20 @@
+class Solution:
+    def findShortestSubArray(self, nums: List[int]) -> int:
+        first, last, occurence = {}, {}, {}
+        _min = 100000
+        for i,v in enumerate(nums) :
+            if v in occurence.keys() :
+                occurence[v]+=1
+                last[v]=i
+            else :
+                occurence[v]=1
+                last[v]=i
+                first[v]=i
+        _max = max(occurence.values())
+
+        for k,v in occurence.items() :
+            if v == _max :
+                a=first[k]
+                b=last[k]
+                _min = min(_min,b-a)
+        return _min+1
