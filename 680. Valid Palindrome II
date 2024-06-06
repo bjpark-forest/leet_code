@@ -1,0 +1,12 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        def isPalindrome(s,use_chance=True) :
+            # print(s, use_chance)
+            for i in range(len(s)//2) :
+                if s[i] != s[len(s)-i-1] :
+                    # print(use_chance,s[i],s[len(s)-i-1])
+                    if use_chance :                       
+                        return (isPalindrome(s[i+1:len(s)-i],False)) or (isPalindrome(s[i:len(s)-i-1],False))
+                    return False
+            return True               
+        return isPalindrome(s)
