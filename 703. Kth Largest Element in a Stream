@@ -1,0 +1,27 @@
+class KthLargest:
+    _k=0
+    _num=0
+    _nums=[]
+    def __init__(self, k: int, nums):
+        nums.sort(reverse=True)
+        self._k=k
+        self._nums = nums[:k]
+        return None
+
+    def add(self, val: int) -> int:
+        if (len(self._nums)) == 0 :
+            self._nums.append(val)
+        elif (len(self._nums) < self._k) or (self._nums[len(self._nums)-1]<val):
+            for i in range(len(self._nums)) :
+                if self._nums[i] < val :
+                    self._nums.insert(i,val)
+                    break
+            else :
+                self._nums.append(val)
+            # self._nums=self._nums[:self._k]
+        # print(self._nums)
+        return self._nums[self._k-1]
+
+# Your KthLargest object will be instantiated and called as such:
+# obj = KthLargest(k, nums)
+# param_1 = obj.add(val)
