@@ -1,0 +1,17 @@
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        result = 'z'
+        found = 0
+        for ch in letters :
+            # print(ch,result, ch>target, ch<result)
+            if (ch > target) :
+                if (found==0) :
+                    found = 1
+                    result = ch
+                elif ch < result :
+                    result = ch
+                    
+        if found==1 :
+            return result
+        else :
+            return letters[0]
