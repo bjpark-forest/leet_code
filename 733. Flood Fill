@@ -1,0 +1,23 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        old_color = image[sr][sc]
+        def add_bucket(old_color,sr,sc,bucket) :
+            # print(sr,sc,image[sr][sc])
+            if ((sr,sc) in bucket) or (old_color != image[sr][sc]) :
+                return
+            
+            bucket.add((sr,sc))
+            if (sr>0) and (image[sr-1][sc] == old_color) and ((sr-1,sc) not in bucket) :
+                add_bucket(old_color,sr-1,sc,bucket)
+            if (sr<len(image)-1) and (image[sr+1][sc] == old_color) and ((sr+1,sc) not in bucket) :
+                add_bucket(old_color,sr+1,sc,bucket)
+            if (sc>0) and (image[sr][sc-1] == old_color) and ((sr,sc-1) not in bucket) :
+                add_bucket(old_color,sr,sc-1,bucket)
+            if (sc<len(image[0])-1) and (image[sr][sc+1] == old_color) and ((sr,sc+1) not in bucket) :
+                add_bucket(old_color,sr,sc+1,bucket)
+        bucket=set()
+        add_bucket(old_color,sr,sc,bucket)
+        # print(bucket)
+        for r,c in bucket :
+            image[r][c]=color
+        return image
