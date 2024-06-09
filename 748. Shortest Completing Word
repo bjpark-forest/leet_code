@@ -1,0 +1,19 @@
+class Solution:
+    def shortestCompletingWord(self, licensePlate: str, words: List[str]) -> str:
+        ch_bucket=[]
+        for x in licensePlate :
+            if (x.lower() >= 'a') and (x.lower()<='z') :
+                ch_bucket.append(x.lower())
+        # print(ch_bucket)
+        _min,result = 20, ""
+        for word in words :
+            bucket = ch_bucket.copy()
+            for ch in word :
+                if ch in bucket:
+                    bucket.remove(ch)
+                if (len(bucket) == 0) and (_min>len(word)) :
+                    result = word
+                    _min = len(result)
+                    # print(result)
+                    break
+        return result
