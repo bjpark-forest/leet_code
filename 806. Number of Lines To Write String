@@ -1,0 +1,10 @@
+class Solution:
+    def numberOfLines(self, widths: List[int], s: str) -> List[int]:
+        lines,pixels=1,0
+        for ch in s :
+            i=ord(ch)-ord('a')
+            pixels += widths[i]
+            if pixels > 100 :
+                lines+=1
+                pixels=widths[i]
+        return [lines,pixels]
