@@ -1,0 +1,29 @@
+class Solution:
+    def isToeplitzMatrix(self, matrix) -> bool:
+        c_num = len(matrix[0])
+        r_num = len(matrix)
+        # print(f'({r_num},{c_num})')
+        for c in range(c_num-1) :
+            # print(f'c:{c}')
+            for r in range(r_num-1) :
+                # print(f'({r},{r+c}),({r+1},{r+c+1})')
+                if r+c+1 >= c_num :
+                    break
+                # print(matrix[r][r+c],matrix[r+1][r+c+1])
+                
+                if matrix[r][r+c] != matrix[r+1][r+c+1] :
+                    return False
+        for r in range(1,r_num-1) :
+            # print(f'r:{r}')
+            for c in range(c_num-1) :
+                # print(f'({r+c},{c}),({r+c+1},{c+1})')
+                if r+c+1 >= r_num :
+                    break
+                # print(matrix[r+c][c],matrix[r+c+1][c+1])
+                
+                if matrix[r+c][c] != matrix[r+c+1][c+1] :
+                    return False
+        return True
+        
+matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
+Solution().isToeplitzMatrix(matrix)
