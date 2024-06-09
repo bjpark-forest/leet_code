@@ -1,0 +1,13 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        M=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        bucket=set()
+        for word in words :
+            morse=""
+            for ch in word :
+                m = ord(ch)-ord('a')
+                # print(M[m])
+                morse+=M[m]
+            bucket.add(morse)
+            # print(word,morse)
+        return len(bucket)
