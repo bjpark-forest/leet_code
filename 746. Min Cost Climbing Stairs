@@ -1,0 +1,11 @@
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        _1before = 0
+        cur=0
+        for i in range(2,len(cost)+1) :
+            _2before=_1before
+            _1before=cur
+            cur=min((_2before+cost[i-2]),(_1before+cost[i-1]))
+            
+            # print(i,_2before,_1before,cur)
+        return cur
