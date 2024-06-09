@@ -1,0 +1,14 @@
+class Solution:
+    def dominantIndex(self, nums: List[int]) -> int:
+        _1st=(-1,-1)
+        _2nd=(-1,-1)
+        for i,v in enumerate(nums) :
+            if v>_1st[1] :
+                _2nd=_1st
+                _1st=(i,v)
+            elif v>_2nd[1] :
+                _2nd=(i,v)
+        if _1st[1]>=_2nd[1]*2 :
+            return _1st[0]
+        else :
+            return -1
