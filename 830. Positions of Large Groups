@@ -1,0 +1,16 @@
+class Solution:
+    def largeGroupPositions(self, s: str) -> List[List[int]]:
+        result = []
+        ch = "X"
+        begin = 0
+        for i,v in enumerate(s) :
+            if v!=ch :
+                if i-begin >=3 :
+                    result.append([begin,i-1])
+                begin=i
+                ch = v
+        else :
+            # print(i,begin)
+            if i-begin >=2 :
+                result.append([begin,i])
+        return result
