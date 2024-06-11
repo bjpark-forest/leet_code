@@ -1,0 +1,18 @@
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        bucket={}
+        _max=0
+        paragraph=paragraph.replace(","," ").replace("!"," ").replace("?"," ").replace("'"," ").replace(";"," ").replace("."," ")
+        paragraph=paragraph.split()
+        for word in paragraph:
+            word = word.lower()
+            if word not in banned :
+                # print(word, bucket, bucket.keys())
+                if word in bucket :
+                    bucket[word]+=1
+                else :
+                    bucket[word]=1
+                if _max<bucket[word] :
+                    _max = bucket[word]
+                    _answer = word
+        return _answer
