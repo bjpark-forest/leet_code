@@ -1,0 +1,22 @@
+class Solution:
+    def shortestToChar(self, s: str, c: str) -> List[int]:
+        c_position=[]
+        for i,v in enumerate(s) :
+            if v==c :
+                c_position.append(i)
+        # print(c_position)
+        result=[]
+        cp=0
+        for i,v in enumerate(s) :
+            if i <= c_position[cp] :
+                result.append(c_position[cp]-i)
+            else :
+                if cp < len(c_position) -1 :
+                    if (c_position[cp+1] - i)<(i-c_position[cp]) :
+                        result.append(c_position[cp+1] - i)
+                        cp += 1
+                    else :
+                        result.append(i-c_position[cp])
+                else :
+                    result.append(i-c_position[cp])
+        return result
