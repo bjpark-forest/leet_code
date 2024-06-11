@@ -1,0 +1,23 @@
+class Solution:
+    def buddyStrings(self, s: str, goal: str) -> bool:
+        if len(s)!=len(goal) :
+            return False
+        mismatch,_count,bucket,_double=[],0,set(),False
+        for i,v in enumerate(s) :
+            if v in bucket :
+                _double=True
+            else :
+                bucket.add(v)
+            if s[i]!=goal[i] :
+                mismatch.append((s[i],goal[i]))
+                _count+=1
+                if _count > 2 :
+                    return False
+        if _count == 0 :
+            return _double
+        elif _count == 1:
+            return False
+        else :
+            # print(mismatch)
+            return (mismatch[0][0]==mismatch[1][1]) and (mismatch[1][0]==mismatch[0][1])
+
