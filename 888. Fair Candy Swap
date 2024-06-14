@@ -1,0 +1,9 @@
+class Solution:
+    def fairCandySwap(self, aliceSizes, bobSizes) :
+        sum_a = sum(aliceSizes)
+        sum_b = sum(bobSizes)
+        target = (sum_a + sum_b) // 2
+        for a in aliceSizes:
+            b = a + (sum_b - sum_a) // 2
+            if b in bobSizes:
+                return [a, b]
