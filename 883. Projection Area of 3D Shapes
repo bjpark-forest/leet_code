@@ -1,0 +1,6 @@
+class Solution:
+    def projectionArea(self, grid) -> int:
+        front = sum(max(row) for row in grid)
+        side = sum(max(row) for row in zip(*grid))
+        top = sum(int(val > 0) for row in grid for val in row)
+        return front + side + top
