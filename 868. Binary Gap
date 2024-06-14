@@ -1,0 +1,16 @@
+class Solution:
+    def binaryGap(self, n: int) -> int:
+        start,_max,zeros=0,0,0
+        while n>0 :
+            if n&1==0 :     # 이번이 0
+                if start :
+                    zeros+=1
+            else :          # 이번이 1
+                if not start :
+                    start = 1
+                else :
+                    _max=max(_max,zeros+1)
+                    zeros=0
+            # print(n&1,zeros+1)
+            n=n>>1
+        return _max
