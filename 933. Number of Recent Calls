@@ -1,0 +1,10 @@
+class RecentCounter:
+    def __init__(self):
+        self.requests = []
+    def ping(self, t: int) -> int:
+        self.requests.append(t)
+        count = 0
+        for request in self.requests:
+            if request >= t - 3000 and request <= t:
+                count += 1
+        return count
